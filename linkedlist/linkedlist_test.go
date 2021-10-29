@@ -124,3 +124,34 @@ func TestLinkedList_Pop(t *testing.T) {
     })
   }
 }
+
+func TestLinkedList_Get(t *testing.T) {
+  type value struct {
+    array []rune
+  }
+  tests := []struct {
+    name string
+    value value
+    want value
+  }{ 
+     {
+        name: "abc", 
+        value: value{[]rune{'a', 'b', 'c'}}, 
+        want: value{[]rune{'a', 'b', 'c'}},
+     },
+  }
+  for _, tt := range tests {
+    t.Run(tt.name, func(t *testing.T) {
+      ll := Create()
+      for _, v := range tt.value.array {
+        ll = Add(ll, v)
+      }
+      for dx, r := range tt.want.array {
+        v := Get(ll, dx)
+        if v != r {
+          t.Errorf("Value does not agree %v != %v", v, r)
+        }
+      }
+    })
+  }
+}

@@ -1,1 +1,6 @@
-docker build . -t gol:1 && docker run --rm -i -t gol:1
+#!/usr/bin/env bash
+
+VERSION=$(date +%m%d%y)
+
+docker build . -t golist:${VERSION} && \
+	docker run --rm -i -t golist:${VERSION}

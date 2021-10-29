@@ -39,3 +39,15 @@ func Pop(list *LinkedList) interface{} {
   }
   return value.value
 }
+
+func Get(list *LinkedList, dx int) interface{} {
+  next := list.root
+  i := 0
+  for ; next != nil && i < dx ; i++ {
+    next = next.next
+  }
+  if i == dx {
+    return next.value
+  }
+  return nil
+}
